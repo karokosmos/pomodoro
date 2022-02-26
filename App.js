@@ -1,6 +1,8 @@
+import React, { useState } from 'react'
 import { StatusBar } from 'expo-status-bar'
-import { StyleSheet, Text, View } from 'react-native'
+import { StyleSheet, View } from 'react-native'
 import AppLoading from 'expo-app-loading'
+
 import {
   useFonts,
   Montserrat_800ExtraBold,
@@ -8,8 +10,18 @@ import {
 } from '@expo-google-fonts/montserrat'
 
 import Timer from './components/Timer'
+import Title from './components/Title'
 
 export default function App() {
+  // Pomodoro status options: work or break
+  // Pomodoro times as minutes
+  const [pomodoro, setPomodoro] = useState({
+    status: 'work',
+    workTime: 2,
+    breakTime: 1
+  })
+
+  // Load google fonts
   let [fontsLoaded] = useFonts({
     Montserrat_800ExtraBold,
     Montserrat_700Bold
@@ -18,11 +30,10 @@ export default function App() {
   if (!fontsLoaded) {
     return <AppLoading />
   }
-
   return (
     <View style={styles.container}>
-      <Text style={styles.text}>Make it happen!</Text>
-      <Timer />
+      <Title status={pomodoro.status} />
+      <Timer pomodoro={pomodoro} setPomodoro={setPomodoro} />
       <StatusBar style="auto" />
     </View>
   )
@@ -31,13 +42,9 @@ export default function App() {
 const styles = StyleSheet.create({
   container: {
     flex: 1,
+    padding: 40,
     backgroundColor: '#fff',
     alignItems: 'center',
     justifyContent: 'center',
-  },
-  text: {
-    fontFamily: 'Montserrat_800ExtraBold',
-    fontSize: 25,
-    marginBottom: 50
   }
 })
