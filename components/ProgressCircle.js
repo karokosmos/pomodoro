@@ -45,7 +45,7 @@ export default function ProgressCircle({ size, strokeWidth, percentage, label })
         fontSize={45}
         x="50%"
         y="50%"
-        dy="20"
+        dy="15"
         textAnchor="middle"
         fontWeight="bold"
       >
