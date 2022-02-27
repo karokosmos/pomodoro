@@ -19,5 +19,6 @@ const styles = StyleSheet.create({
     fontFamily: 'Montserrat_800ExtraBold',
     fontSize: 30,
     textAlign: 'center',
+    color: '#2d2d2d'
   }
 })

@@ -12,18 +12,18 @@ export default function CircularProgress({ size, strokeWidth, percentage, label 
 
       <Defs>
         <LinearGradient id="grad">
-          <Stop offset="0" stopColor="#FBAB7E" stopOpacity="1" />
-          <Stop offset="1" stopColor="#FEDA82" stopOpacity="1" />
+          <Stop offset="0" stopColor="#c93e3e" stopOpacity="1" />
+          <Stop offset="1" stopColor="#f45a5a" stopOpacity="1" />
         </LinearGradient>
       </Defs>
 
       <Circle
         fill="none"
-        stroke="#f6f6f6"
+        stroke="#f4f4f4"
         cx={size / 2}
         cy={size / 2}
         r={radius}
-        strokeWidth={`${strokeWidth}px`}
+        strokeWidth={`${strokeWidth / 3}px`}
       />
 
       {percentage !== 0 &&
@@ -41,7 +41,7 @@ export default function CircularProgress({ size, strokeWidth, percentage, label 
       }
 
       <Text
-        fill="#2D2D2D"
+        fill="#2d2d2d"
         fontSize={45}
         x="50%"
         y="50%"

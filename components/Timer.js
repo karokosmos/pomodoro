@@ -76,7 +76,7 @@ export default function Timer({ pomodoro, setPomodoro }) {
       <View style={{ marginVertical: 60 }}>
         <CircularProgress
           size={250}
-          strokeWidth={15}
+          strokeWidth={14}
           percentage={percentage}
           label={`${labelMinutes}:${labelSeconds}`}
         />
