@@ -1,7 +1,7 @@
 import React from 'react'
 import Svg, { Circle, Defs, LinearGradient, Text, Stop } from 'react-native-svg'
 
-export default function ProgressCircle({ size, strokeWidth, percentage, label }) {
+export default function CircularProgress({ size, strokeWidth, percentage, label }) {
   const viewBox = `0 0 ${size} ${size}`
   const radius = (size - strokeWidth) / 2
   const circumference = radius * Math.PI * 2

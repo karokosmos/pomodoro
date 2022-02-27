@@ -17,8 +17,8 @@ export default function App() {
   // Pomodoro times as minutes
   const [pomodoro, setPomodoro] = useState({
     status: 'work',
-    workTime: 2,
-    breakTime: 1
+    workTime: 25,
+    breakTime: 5
   })
 
   // Load google fonts

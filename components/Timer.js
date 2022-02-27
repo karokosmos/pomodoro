@@ -1,8 +1,7 @@
 import React, { useState } from 'react'
-import ProgressCircle from './ProgressCircle'
 import { View } from 'react-native'
-
-import Button from './Button'
+import CircularProgress from './CircularProgress'
+import Controls from './Controls'
 
 export default function Timer({ pomodoro, setPomodoro }) {
   const { status, workTime, breakTime } = pomodoro
@@ -10,28 +9,6 @@ export default function Timer({ pomodoro, setPomodoro }) {
   const [minutes, setMinutes] = useState(workTime)
   const [seconds, setSeconds] = useState(0)
   const [timerOn, setTimerOn] = useState(false)
-
-  const start = () => {
-    setTimerOn(true)
-  }
-
-  const pause = () => {
-    clearInterval(interval)
-    setTimerOn(false)
-  }
-
-  // Change pomodoro status and time to match the next interval
-  const next = () => {
-    if (status === 'work') {
-      setMinutes(breakTime)
-      setSeconds(0)
-      setPomodoro({ ...pomodoro, status: 'break' })
-    } else {
-      setMinutes(workTime)
-      setSeconds(0)
-      setPomodoro({ ...pomodoro, status: 'work' })
-    }
-  }
 
   // Timer
   let interval
@@ -54,6 +31,29 @@ export default function Timer({ pomodoro, setPomodoro }) {
     }, 1000)
   }
 
+  const start = () => {
+    setTimerOn(true)
+  }
+
+  const pause = () => {
+    clearInterval(interval)
+    setTimerOn(false)
+  }
+
+  // Change pomodoro status and time to match the next interval
+  const next = () => {
+    clearInterval(interval)
+    if (status === 'work') {
+      setMinutes(breakTime)
+      setSeconds(0)
+      setPomodoro({ ...pomodoro, status: 'break' })
+    } else {
+      setMinutes(workTime)
+      setSeconds(0)
+      setPomodoro({ ...pomodoro, status: 'work' })
+    }
+  }
+
   // Add zeroes for label if needed
   const labelMinutes = minutes < 10 ? `0${minutes}` : minutes
   const labelSeconds = seconds < 10 ? `0${seconds}` : seconds
@@ -74,16 +74,19 @@ export default function Timer({ pomodoro, setPomodoro }) {
   return (
     <View style={{ alignItems: 'center' }}>
       <View style={{ marginVertical: 60 }}>
-        <ProgressCircle
+        <CircularProgress
           size={250}
           strokeWidth={15}
           percentage={percentage}
           label={`${labelMinutes}:${labelSeconds}`}
         />
       </View>
-      {timerOn
-        ? <Button handlePress={pause} timerOn={timerOn} />
-        : <Button handlePress={start} timerOn={timerOn} />}
+      <Controls
+        timerOn={timerOn}
+        pauseTimer={pause}
+        startTimer={start}
+        skipInterval={next}
+      />
     </View>
   )
 }
