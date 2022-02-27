@@ -9,14 +9,12 @@ export default function CircularProgress({ size, strokeWidth, percentage, label 
 
   return (
     <Svg width={size} height={size} viewBox={viewBox}>
-
       <Defs>
         <LinearGradient id="grad">
           <Stop offset="0" stopColor="#c93e3e" stopOpacity="1" />
           <Stop offset="1" stopColor="#f45a5a" stopOpacity="1" />
         </LinearGradient>
       </Defs>
-
       <Circle
         fill="none"
         stroke="#f4f4f4"
@@ -25,7 +23,6 @@ export default function CircularProgress({ size, strokeWidth, percentage, label 
         r={radius}
         strokeWidth={`${strokeWidth / 3}px`}
       />
-
       {percentage !== 0 &&
         <Circle
           fill="none"
@@ -39,7 +36,6 @@ export default function CircularProgress({ size, strokeWidth, percentage, label 
           strokeLinecap="round"
         />
       }
-
       <Text
         fill="#2d2d2d"
         fontSize={45}
@@ -51,7 +47,6 @@ export default function CircularProgress({ size, strokeWidth, percentage, label 
       >
         {label}
       </Text>
-
     </Svg>
   )
 }

@@ -1,4 +1,4 @@
-import React, { useState } from 'react'
+import React, { useEffect, useState } from 'react'
 import { View } from 'react-native'
 import CircularProgress from './CircularProgress'
 import Controls from './Controls'
@@ -9,6 +9,12 @@ export default function Timer({ pomodoro, setPomodoro }) {
   const [minutes, setMinutes] = useState(workTime)
   const [seconds, setSeconds] = useState(0)
   const [timerOn, setTimerOn] = useState(false)
+
+  // Update the states for minutes and seconds when pomodoro prop updates
+  useEffect(() => {
+    status === 'work' ? setMinutes(workTime) : setMinutes(breakTime)
+    setSeconds(0)
+  }, [pomodoro])
 
   // Timer
   let interval
@@ -86,6 +92,8 @@ export default function Timer({ pomodoro, setPomodoro }) {
         pauseTimer={pause}
         startTimer={start}
         skipInterval={next}
+        pomodoro={pomodoro}
+        setPomodoro={setPomodoro}
       />
     </View>
   )

@@ -17,9 +17,17 @@ export default function App() {
   // Pomodoro times as minutes
   const [pomodoro, setPomodoro] = useState({
     status: 'work',
-    workTime: 2,
-    breakTime: 1
+    workTime: 25,
+    breakTime: 5
   })
+
+  /*  const changePomodoroSettings = (newWorkTime, newBreakTime) => {
+     setPomodoro({
+       ...pomodoro,
+       workTime: newWorkTime,
+       breakTime: newBreakTime
+     })
+   } */
 
   // Load google fonts
   let [fontsLoaded] = useFonts({
@@ -33,7 +41,10 @@ export default function App() {
   return (
     <View style={styles.container}>
       <Title status={pomodoro.status} />
-      <Timer pomodoro={pomodoro} setPomodoro={setPomodoro} />
+      <Timer
+        pomodoro={pomodoro}
+        setPomodoro={setPomodoro}
+      />
       <StatusBar style="auto" />
     </View>
   )
