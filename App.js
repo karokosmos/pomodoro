@@ -21,14 +21,6 @@ export default function App() {
     breakTime: 5
   })
 
-  /*  const changePomodoroSettings = (newWorkTime, newBreakTime) => {
-     setPomodoro({
-       ...pomodoro,
-       workTime: newWorkTime,
-       breakTime: newBreakTime
-     })
-   } */
-
   // Load google fonts
   let [fontsLoaded] = useFonts({
     Montserrat_800ExtraBold,

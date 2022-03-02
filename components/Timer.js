@@ -10,7 +10,7 @@ export default function Timer({ pomodoro, setPomodoro }) {
   const [seconds, setSeconds] = useState(0)
   const [timerOn, setTimerOn] = useState(false)
 
-  // Update the states for minutes and seconds when pomodoro prop updates
+  // Update the states for minutes and seconds when pomodoro prop updates (settings are changed)
   useEffect(() => {
     status === 'work' ? setMinutes(workTime) : setMinutes(breakTime)
     setSeconds(0)
